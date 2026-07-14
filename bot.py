@@ -6,7 +6,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 
 # === KONFIG ===
 TOKEN = "8541476833:AAHpgtTRGEJ1kF468TTEAlsPgcZbKZxRVEE"
-WEBAPP_URL = "https://github.com/myalzahsy-hash/laundry-webapp"
+WEBAPP_URL = "https://myalzahsy-hash.github.io/laundry-webapp/"
 
 logging.basicConfig(level=logging.INFO)
 
