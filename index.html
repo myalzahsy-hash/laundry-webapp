@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🧺 Input Struk Laundry</title>
+    •
+</head>
+<body>
+
+            <span class="icon">🧺</span>
+            <b>Input Struk Laundry</b>
+            Isi data pelanggan, kirim ke printer thermal
+
+                <label for="nama">Nama Pelanggan</label>
+                <input type="text" id="nama" placeholder="Contoh: Alfredo" autocomplete="off">
+
+                <label for="nota">No. Nota</label>
+                <input type="text" id="nota" placeholder="Contoh: 0007" autocomplete="off">
+
+            <b>Jumlah Item</b>
+
+                <span class="item-label">👕 Pakaian</span>
+
+                    <button class="stepper-btn minus">−</button>
+                    <span class="stepper-value" id="val-pakaian">0</span>
+                    <button class="stepper-btn plus">+</button>
+
+                <span class="item-label">👙 CD</span>
+
+                    <button class="stepper-btn minus">−</button>
+                    <span class="stepper-value" id="val-cd">0</span>
+                    <button class="stepper-btn plus">+</button>
+
+                <span class="item-label">🩱 BH</span>
+
+                    <button class="stepper-btn minus">−</button>
+                    <span class="stepper-value" id="val-bh">0</span>
+                    <button class="stepper-btn plus">+</button>
+
+                <span class="item-label">🧦 K. Kaki</span>
+
+                    <button class="stepper-btn minus">−</button>
+                    <span class="stepper-value" id="val-kaoskaki">0</span>
+                    <button class="stepper-btn plus">+</button>
+
+                <span class="item-label">📦 Lainnya</span>
+
+                    <button class="stepper-btn minus">−</button>
+                    <span class="stepper-value" id="val-lainnya">0</span>
+                    <button class="stepper-btn plus">+</button>
+
+                <span>Total Item</span>
+                <span class="total-value" id="total-display">0</span>
+
+        <button class="submit-btn" id="submitBtn">
+            🖨️ KIRIM KE PRINTER
+        </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
