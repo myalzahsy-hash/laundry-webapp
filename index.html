@@ -4,59 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🧺 Input Struk Laundry</title>
-    •
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+            background: #fafafa;
+            margin-bottom: 14px;
+        }
+        input:focus {
+            border-color: #6C5CE7;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(108,92,231,0.15);
+        }
+        .item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        .item-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .item-label span {
+            font-size: 22px;
+        }
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .counter button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-minus {
+            background: #f1f0ff;
+            color: #6C5CE7;
+        }
+        .btn-plus {
+            background: #6C5CE7;
+            color: white;
+        }
+        .counter button:active {
+            transform: scale(0.92);
+        }
+        .counter span {
+            font-size: 18px;
+            font-weight: 700;
+            min-width: 28px;
+            text-align: center;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+        .submit-btn:active {
+transform: scale(0.97);
+            background: #5a4bd1;
+        }
+        .summary {
+            background: #f8f7ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-            <span class="icon">🧺</span>
-            <b>Input Struk Laundry</b>
-            Isi data pelanggan, kirim ke printer thermal
+            🧺 Input Struk Laundry
 
-                <label for="nama">Nama Pelanggan</label>
-                <input type="text" id="nama" placeholder="Contoh: Alfredo" autocomplete="off">
+            <label>👤 Nama Pelanggan</label>
+            <input type="text" id="nama" placeholder="Contoh: Alfredo">
 
-                <label for="nota">No. Nota</label>
-                <input type="text" id="nota" placeholder="Contoh: 0007" autocomplete="off">
+            <label>📋 No. Nota</label>
+            <input type="text" id="nota" placeholder="Contoh: 0007">
 
-            <b>Jumlah Item</b>
+            <label style="margin-top:8px;">👕 Item Pakaian</label>
 
-                <span class="item-label">👕 Pakaian</span>
+                    👕 Pakaian
 
-                    <button class="stepper-btn minus">−</button>
-                    <span class="stepper-value" id="val-pakaian">0</span>
-                    <button class="stepper-btn plus">+</button>
+                        <button class="btn-minus" data-key="pakaian">−</button>
+                        0
+                        <button class="btn-plus" data-key="pakaian">+</button>
 
-                <span class="item-label">👙 CD</span>
+                    👖 Celana
 
-                    <button class="stepper-btn minus">−</button>
-                    <span class="stepper-value" id="val-cd">0</span>
-                    <button class="stepper-btn plus">+</button>
+                        <button class="btn-minus" data-key="cd">−</button>
+                        0
+                        <button class="btn-plus" data-key="cd">+</button>
 
-                <span class="item-label">🩱 BH</span>
+                    👔 BH
 
-                    <button class="stepper-btn minus">−</button>
-                    <span class="stepper-value" id="val-bh">0</span>
-                    <button class="stepper-btn plus">+</button>
+                        <button class="btn-minus" data-key="bh">−</button>
+                        0
+                        <button class="btn-plus" data-key="bh">+</button>
 
-                <span class="item-label">🧦 K. Kaki</span>
+                    🧦 Kaos Kaki
 
-                    <button class="stepper-btn minus">−</button>
-                    <span class="stepper-value" id="val-kaoskaki">0</span>
-                    <button class="stepper-btn plus">+</button>
+                        <button class="btn-minus" data-key="kaoskaki">−</button>
+                        0
+                        <button class="btn-plus" data-key="kaoskaki">+</button>
 
-                <span class="item-label">📦 Lainnya</span>
+                    📦 Lainnya
 
-                    <button class="stepper-btn minus">−</button>
-                    <span class="stepper-value" id="val-lainnya">0</span>
-                    <button class="stepper-btn plus">+</button>
+                        <button class="btn-minus" data-key="lainnya">−</button>
+                        0
+                        <button class="btn-plus" data-key="lainnya">+</button>
 
-                <span>Total Item</span>
-                <span class="total-value" id="total-display">0</span>
+                Total: 0 pcs
 
-        <button class="submit-btn" id="submitBtn">
-            🖨️ KIRIM KE PRINTER
-        </button>
+            <button class="submit-btn" id="kirimBtn">📨 KIRIM KE BOT</button>
 
-    <script src="app.js"></script>
+    <script>
+        const items = { pakaian:0, cd:0, bh:0, kaoskaki:0, lainnya:0 };
+        const labelMap = {
+            pakaian:'Pakaian', cd:'Celana', bh:'BH',
+            kaoskaki:'Kaos Kaki', lainnya:'Lainnya'
+        };
+
+        function updateTotal() {
+            const total = Object.values(items).reduce((a,b)=>a+b,0);
+document.getElementById('totalDisplay').textContent = total;
+        }
+
+        document.querySelectorAll('.btn-plus').forEach(btn => {
+            btn.onclick = () => {
+                const key = btn.dataset.key;
+                items[key]++;
+                document.getElementById('val-'+key).textContent = items[key];
+                updateTotal();
+            };
+        });
+
+        document.querySelectorAll('.btn-minus').forEach(btn => {
+            btn.onclick = () => {
+                const key = btn.dataset.key;
+                if (items[key] > 0) items[key]--;
+                document.getElementById('val-'+key).textContent = items[key];
+                updateTotal();
+            };
+        });
+
+        document.getElementById('kirimBtn').onclick = () => {
+            const nama = document.getElementById('nama').value.trim();
+            const nota = document.getElementById('nota').value.trim();
+            if (!nama || !nota) {
+                alert('⚠️ Isi nama dan no. nota dulu!');
+                return;
+            }
+            const total = Object.values(items).reduce((a,b)=>a+b,0);
+            if (total === 0) {
+                alert('⚠️ Minimal 1 item!');
+                return;
+            }
+
+            const data = { nama, nota, items, total };
+            Telegram.WebApp.sendData(JSON.stringify(data));
+            Telegram.WebApp.close();
+        };
+
+        // inisialisasi total
+        updateTotal();
+    </script>
 </body>
 </html>
